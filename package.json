@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iiBamBlue/se_project_spots.git"
+    "url": "git+https://github.com/MavScriptBlu/se_project_spots.git"
   },
   "author": "Darien Johnas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iiBamBlue/se_project_spots/issues"
+    "url": "https://github.com/MavScriptBlu/se_project_spots/issues"
   },
-  "homepage": "https://iibamblue.github.io/se_project_spots/",
+  "homepage": "https://mavscriptblu.github.io/se_project_spots/",
   "devDependencies": {
     "@babel/core": "7.18.9",
     "@babel/preset-env": "7.18.9",
