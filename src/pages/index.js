@@ -29,39 +29,6 @@ if (editButtonImg) editButtonImg.src = editButtonPath;
 if (addButtonImg) addButtonImg.src = addButtonPath;
 if (pencilIcon) pencilIcon.src = editLightButtonPath;
 
-const api = new Api({
-  baseUrl: config.apiBaseUrl,
-  headers: {
-    authorization: config.apiToken,
-    "Content-Type": "application/json",
-  },
-});
-
-let userId;
-
-api
-  .getUserInfo()
-  .then((userData) => {
-    userId = userData._id;
-    if (profileName) profileName.textContent = userData.name;
-    if (profileDescription) profileDescription.textContent = userData.about;
-    if (profileAvatarElement) profileAvatarElement.src = userData.avatar;
-    return api.getInitialCards();
-  })
-  .then((cards) => {
-    if (cardsList && Array.isArray(cards)) {
-      cards.forEach((card) => {
-        const cardElement = getCardElement(card);
-        if (cardElement) {
-          cardsList.append(cardElement);
-        }
-      });
-    } else {
-      console.error("Cards list element not found or cards data is invalid");
-    }
-  })
-  .catch(handleApiError);
-
 // Profile Selectors with null checks
 const editModalButton = document.querySelector(".profile__edit-button");
 const cardModalButton = document.querySelector(".profile__add-button");
@@ -101,6 +68,39 @@ const previewCaption = previewModal?.querySelector(".modal__caption");
 // Cards
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+
+const api = new Api({
+  baseUrl: config.apiBaseUrl,
+  headers: {
+    authorization: config.apiToken,
+    "Content-Type": "application/json",
+  },
+});
+
+let userId;
+
+api
+  .getUserInfo()
+  .then((userData) => {
+    userId = userData._id;
+    if (profileName) profileName.textContent = userData.name;
+    if (profileDescription) profileDescription.textContent = userData.about;
+    if (profileAvatarElement) profileAvatarElement.src = userData.avatar;
+    return api.getInitialCards();
+  })
+  .then((cards) => {
+    if (cardsList && Array.isArray(cards)) {
+      cards.forEach((card) => {
+        const cardElement = getCardElement(card);
+        if (cardElement) {
+          cardsList.append(cardElement);
+        }
+      });
+    } else {
+      console.error("Cards list element not found or cards data is invalid");
+    }
+  })
+  .catch(handleApiError);
 
 function getCardElement(data) {
   if (!cardTemplate) {
