@@ -2,11 +2,18 @@
   max-width: 413px;
 }
 
-.card__image {
-  width: 413px; /* width and height keep image correct size*/
+.card__image-content {
+  position: relative;
+  width: 413px;
   height: 413px;
   border-radius: 8px;
-  object-fit: cover; /* keeps images looking nice */
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   cursor: pointer;
 }
 
@@ -33,14 +40,15 @@
 }
 
 .card__delete-button {
-  position: absolute; /* having absolute makes sure each card has a button and in the correct spot*/
-  margin: 10px 371px 0;
-  padding: 0; /* controls size of svg i guess */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
   background-image: url(../images/delete-icon.svg);
-  background-repeat: no-repeat; /* this and bg size is keeping the icon true to size */
+  background-repeat: no-repeat;
   background-size: contain;
-  width: 32px; /*makes sure svg actually shows */
-  height: 32px; /*same as width*/
+  width: 32px;
+  height: 32px;
   border: none;
   background-color: transparent;
   opacity: 100%;
@@ -79,12 +87,25 @@
   opacity: 40%;
 }
 
+.card__like-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card__like-count {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(33, 33, 33, 0.7);
+}
+
 @media screen and (max-width: 627px) {
   .card {
     max-width: 288px;
   }
 
-  .card__image {
+  .card__image-content {
     width: 288px;
     height: 288px;
   }
@@ -98,9 +119,5 @@
   .card__like-button {
     width: 20px;
     height: 18px;
-  }
-
-  .card__delete-button {
-    margin: 10px 246px 0;
   }
 }

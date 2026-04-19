@@ -9,7 +9,11 @@
 .profile__avatar-container {
   position: relative;
   display: block;
+  width: 190px;
   height: 190px;
+  margin-right: 20px;
+  border-radius: 8px;
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -34,11 +38,9 @@
 
 /* Avatar image */
 .profile__avatar {
-  margin-right: 20px;
   height: 190px;
   width: 190px;
   border-radius: 8px;
-  z-index: 1;
 }
 
 /* Avatar edit button */
@@ -163,11 +165,12 @@
   .profile__avatar-container {
     height: 80px;
     width: 80px;
+    margin-right: 0;
+    margin-bottom: 12px;
     cursor: default;
   }
 
   .profile__avatar {
-    margin: 0 0 12px;
     height: 80px;
     width: 80px;
   }
